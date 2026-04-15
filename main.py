@@ -1,0 +1,2 @@
+from test.scenariotest import test_scenario_writer_and_loader
+test_scenario_writer_and_loader()
