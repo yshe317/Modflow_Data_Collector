@@ -1,2 +1,2 @@
-from test.scenariotest import test_scenario_writer_and_loader
-test_scenario_writer_and_loader()
+from test.scenariotest import go_throught_test
+go_throught_test()

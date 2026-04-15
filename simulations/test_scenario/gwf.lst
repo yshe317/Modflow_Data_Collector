@@ -1,0 +1,2615 @@
+                                   MODFLOW 6
+                U.S. GEOLOGICAL SURVEY MODULAR HYDROLOGIC MODEL
+                          GROUNDWATER FLOW MODEL (GWF)
+                            VERSION 6.6.3 09/29/2025
+
+   MODFLOW 6 compiled Sep 29 2025 08:23:57 with Intel(R) Fortran Intel(R) 64
+   Compiler Classic for applications running on Intel(R) 64, Version 2021.7.0
+                             Build 20220726_000000
+
+This software has been approved for release by the U.S. Geological 
+Survey (USGS). Although the software has been subjected to rigorous 
+review, the USGS reserves the right to update the software as needed 
+pursuant to further analysis and review. No warranty, expressed or 
+implied, is made by the USGS or the U.S. Government as to the 
+functionality of the software and related material nor shall the 
+fact of release constitute any such warranty. Furthermore, the 
+software is released on condition that neither the USGS nor the U.S. 
+Government shall be held liable for any damages resulting from its 
+authorized or unauthorized use. Also refer to the USGS Water 
+Resources Software User Rights Notice for complete use, copyright, 
+and distribution information.
+
+
+As a work of the United States Government, this USGS product is 
+in the public domain within the United States. You can copy, 
+modify, distribute, and perform the work, even for commercial 
+purposes, all without asking permission. Additionally, USGS 
+waives copyright and related rights in the work worldwide 
+through CC0 1.0 Universal Public Domain Dedication 
+(https://creativecommons.org/publicdomain/zero/1.0/).
+
+The following GNU Lesser General Public License (LGPL) libraries
+are used in this USGS product:
+
+    SPARSKIT version 2.0
+      ilut, luson, and qsplit 
+      (https://www-users.cse.umn.edu/~saad/software/SPARSKIT/)
+
+    RCM - Reverse Cuthill McKee Ordering
+      (https://people.math.sc.edu/Burkardt/f_src/rcm/rcm.html)
+
+    BLAS - Basic Linear Algebra Subprograms Level 1
+      (https://people.math.sc.edu/Burkardt/f_src/blas1_d/blas1_d.html)
+
+    SPARSEKIT - Sparse Matrix Utility Package
+      amux, dperm, dvperm, rperm, and cperm
+      (https://people.sc.fsu.edu/~jburkardt/f77_src/sparsekit/sparsekit.html)
+
+The following BSD-3 License libraries are used in this USGS product:
+
+    Modern Fortran DAG Library
+      Copyright (c) 2018, Jacob Williams
+      All rights reserved.
+      (https://github.com/jacobwilliams/daglib)
+
+MODFLOW 6 compiler options: /Isrc\libmf6_external.a.p /Isrc\libmf6core.a.p
+/Isrc /I..\src /MT /nologo /warn:general /warn:truncated_source /stand:f18
+/O2 /fpe:0 /heap-arrays:0 /traceback /fpp /Qdiag-disable:7416
+/Qdiag-disable:7025 /Qdiag-disable:5268 /Qdiag-disable:10448
+/Fdsrc\libmf6core.a.p\Utilities_compilerversion.F90.pdb
+/module:src\libmf6core.a.p
+/Fosrc/libmf6core.a.p/Utilities_compilerversion.F90.obj /c
+
+System command used to initiate simulation:
+D:\tools\bin\mf6.exe
+
+MODFLOW was compiled using uniform precision.
+
+Real Variables
+  KIND: 8
+  TINY (smallest non-zero value):    2.225074-308
+  HUGE (largest value):    1.797693+308
+  PRECISION: 15
+  SIZE IN BITS: 64
+
+Integer Variables
+  KIND: 4
+  HUGE (largest value): 2147483647
+  SIZE IN BITS: 32
+
+Long Integer Variables
+  KIND: 8
+  HUGE (largest value): 9223372036854775807
+  SIZE IN BITS: 64
+
+Logical Variables
+  KIND: 4
+  SIZE IN BITS: 32
+ 
+ NAMEFILE OPTIONS:
+    FLOWS WILL BE SAVED TO BUDGET FILE SPECIFIED IN OUTPUT CONTROL
+ END NAMEFILE OPTIONS:
+
+ DIS -- STRUCTURED GRID DISCRETIZATION PACKAGE, VERSION 2 : 3/27/2014 - INPUT READ FROM MEMPATH: __INPUT__/GWF/DIS                                 
+
+
+ NPF -- NODE PROPERTY FLOW PACKAGE, VERSION 1, 3/30/2015 INPUT READ FROM MEMPATH: __INPUT__/GWF/NPF                                 
+
+
+ IC -- Initial Conditions Package, Version 8, 3/28/2015 input read from mempath: __INPUT__/GWF/IC                                  
+
+
+ Setting Discretization Options
+    Model length unit [0=UND, 1=FEET, 2=METERS, 3=CENTIMETERS] set as 2
+ End Setting Discretization Options
+
+ Setting Discretization Dimensions
+    NLAY = 1
+    NROW = 10
+    NCOL = 10
+ End Setting Discretization Dimensions
+
+ Setting Discretization Griddata
+    DELR set from input file
+    DELC set from input file
+    TOP set from input file
+    BOTM set from input file
+    IDOMAIN set from input file
+ End Setting Discretization Griddata
+
+ Setting NPF Options
+    Specific discharge will be calculated at cell centers and written to DATA-SPDIS in budget file when requested.
+ End Setting NPF Options
+
+ Setting NPF Griddata
+    ICELLTYPE set from input file
+    K set from input file
+    K33 set from input file
+    K22 not provided.  Setting K22 = K.
+ End Setting NPF Griddata
+
+    STRT set from input file
+    BINARY GRID INFORMATION WILL BE WRITTEN TO:
+      UNIT NUMBER: 1009
+      FILE NAME: gwf.dis.grb
+
+ OPENED gwf.dis.grb
+ FILE TYPE:DATA(BINARY)   UNIT 1009   STATUS:REPLACE             
+ FORMAT:UNFORMATTED            ACCESS:STREAM              
+ ACTION:READWRITE           
+
+      THE LAST TIME STEP WILL BE PRINTED
+      THE LAST TIME STEP WILL BE PRINTED
+
+start timestep kper="1" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="1" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    1
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    1
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+
+
+end timestep
+
+
+start timestep kper="2" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="2" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    2
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    2
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 5.18400E+06  86400.      1440.0      60.000     0.16427    
+
+
+end timestep
+
+
+start timestep kper="3" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="3" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    3
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    3
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 7.77600E+06 1.29600E+05  2160.0      90.000     0.24641    
+
+
+end timestep
+
+
+start timestep kper="4" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="4" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    4
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    4
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 1.03680E+07 1.72800E+05  2880.0      120.00     0.32854    
+
+
+end timestep
+
+
+start timestep kper="5" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="5" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    5
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    5
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 1.29600E+07 2.16000E+05  3600.0      150.00     0.41068    
+
+
+end timestep
+
+
+start timestep kper="6" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="6" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    6
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    6
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 1.55520E+07 2.59200E+05  4320.0      180.00     0.49281    
+
+
+end timestep
+
+
+start timestep kper="7" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="7" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    7
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    7
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 1.81440E+07 3.02400E+05  5040.0      210.00     0.57495    
+
+
+end timestep
+
+
+start timestep kper="8" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="8" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    8
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    8
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 2.07360E+07 3.45600E+05  5760.0      240.00     0.65708    
+
+
+end timestep
+
+
+start timestep kper="9" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="9" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD    9
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD    9
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 2.33280E+07 3.88800E+05  6480.0      270.00     0.73922    
+
+
+end timestep
+
+
+start timestep kper="10" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="10" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD   10
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD   10
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 2.59200E+07 4.32000E+05  7200.0      300.00     0.82136    
+
+
+end timestep
+
+
+start timestep kper="11" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="11" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD   11
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD   11
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 2.85120E+07 4.75200E+05  7920.0      330.00     0.90349    
+
+
+end timestep
+
+
+start timestep kper="12" kstp="1" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="2" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="3" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="4" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="5" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="6" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="7" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="8" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="9" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="10" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="11" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="12" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="13" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="14" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="15" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="16" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="17" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="18" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="19" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="20" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="21" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="22" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="23" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="24" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="25" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="26" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="27" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="28" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="29" mode="normal"
+
+
+end timestep
+
+
+start timestep kper="12" kstp="30" mode="normal"
+
+1
+  HEAD IN LAYER   1 AT END OF TIME STEP  30 IN STRESS PERIOD   12
+  ---------------------------------------------------------------------------
+
+            1           2           3           4           5           6           7           8           9          10
+ ........................................................................................................................
+   1    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   2    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   3    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   4    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   5    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   6    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   7    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   8    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+   9    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+  10    0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000       0.000    
+
+
+
+         TIME SUMMARY AT END OF TIME STEP   30 IN STRESS PERIOD   12
+                    SECONDS     MINUTES      HOURS       DAYS        YEARS
+                    -----------------------------------------------------------
+   TIME STEP LENGTH  86400.      1440.0      24.000      1.0000     2.73785E-03
+ STRESS PERIOD TIME 2.59200E+06  43200.      720.00      30.000     8.21355E-02
+         TOTAL TIME 3.11040E+07 5.18400E+05  8640.0      360.00     0.98563    
+
+
+end timestep
+

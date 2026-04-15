@@ -12,6 +12,8 @@ class ScenarioWriter:
             ## general
             "length_units" : "meters", # default is meters 
             "time_units" : None, # default is days
+            "icelltype" : 0, # default is 0
+            
             ### model geometry
             "nlay" : None,  # Number of layers
             "nrow" : None,  # Number of rows
@@ -60,14 +62,33 @@ class ScenarioWriter:
         self.scenario["nper"] = nper
         self.scenario["tdis_rc"] = tdis_rc
         
-    def set_discretization(self, nlay, nrow, ncol, delr, delc, delz):
+    def set_discretization(self, nlay, nrow, ncol, delr, delc, delz, top, botm):
         self.scenario["nlay"] = nlay
         self.scenario["nrow"] = nrow
         self.scenario["ncol"] = ncol
         self.scenario["delr"] = delr
         self.scenario["delc"] = delc
         self.scenario["delz"] = delz
-        
+        self.scenario["top"] = top
+        self.scenario["botm"] = botm
+    
+    def set_k(self, k11, k33=None):
+        if k33 is None:
+            k33 = k11
+        self.scenario["k11"] = k11
+        self.scenario["k33"] = k33
+
+    def set_initial_head(self, initial_head):
+        self.scenario["initial_head"] = initial_head
+
+
+    def set_flowmodel_solver(self, hclose, nouter, ninner, rclose, relax):
+        self.scenario["hclose"] = hclose
+        self.scenario["nouter"] = nouter
+        self.scenario["ninner"] = ninner
+        self.scenario["rclose"] = rclose
+        self.scenario["relax"] = relax
+    
     def write(self):
         with open(os.path.join(self.path, "scenario.json"), "w") as f:
             f.write(json.dumps(self.scenario, indent=4))
