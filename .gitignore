@@ -158,3 +158,6 @@ scenarios/
 # Temporary files
 *.tmp
 *.temp
+
+# simu
+simulations/
