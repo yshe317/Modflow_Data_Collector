@@ -16,7 +16,7 @@ class ScenarioWriter:
             "length_units" : "meters", # default is meters 
             "time_units" : None, # default is days
             "icelltype" : 0, # default is 0
-            
+            "mixelm" : 0,
             ### model geometry
             "nlay" : None,  # Number of layers
             "nrow" : None,  # Number of rows
@@ -30,7 +30,7 @@ class ScenarioWriter:
             "tdis_rc" : None,    # time step interval
                 
             ## for flow model
-            "prsity" : None,  # Porosity ($$)
+            "prsity" : 0.3,  # Porosity ($$)
             "k11" : None,  # Horizontal hydraulic conductivity ($m/d$)
             "initial_head" : None,
             'chdspd' : {},
@@ -38,8 +38,9 @@ class ScenarioWriter:
             
             ## for pollution model
             "source" : [],
-            "al" : None,  # Longitudinal dispersivity ($m$)
-            "trpt" : None,  # Ratio of transverse to longitudinal dispersivity
+            "al" : 0,  # Longitudinal dispersivity ($m$)
+            "trpt" : 0.3,  # Ratio of transverse to longitudinal dispersivity
+            "cncspd":None, 
         }
         # make scenario_name as a dir
         if not os.path.exists(self.path):
@@ -106,6 +107,20 @@ class ScenarioWriter:
         self.scenario["rclose"] = rclose
         self.scenario["relax"] = relax
     
+    def set_initial_concentration(self,initial_concentration):
+        self.scenario['sconc'] = initial_concentration
+    
+    def set_al(self, al, trt):
+        self.scenario['al'] = al
+        self.scenario['trt'] = trt
+        
+    def set_cncspd(self,cncspd_posi, target_period=0):
+        if not self.scenario['cncspd']:
+            self.scenario['cncspd'] = {}
+        self.scenario['cncspd'][target_period] = cncspd_posi
+
+
+
     def write(self):
         with open(os.path.join(self.path, "scenario.json"), "w") as f:
             f.write(json.dumps(self.scenario, indent=4))
