@@ -2,6 +2,9 @@
 import os
 import pathlib
 import json
+
+import numpy as np
+
 class ScenarioWriter:
     def __init__(self, scenario_name, scenarios_dir = "scenarios"):
         self.path = pathlib.Path(scenarios_dir) / scenario_name
@@ -29,8 +32,9 @@ class ScenarioWriter:
             ## for flow model
             "prsity" : None,  # Porosity ($$)
             "k11" : None,  # Horizontal hydraulic conductivity ($m/d$)
-            "initial_head"  : None,
-            "constant_head" : [],
+            "initial_head" : None,
+            'chdspd' : {},
+            'wellspd' : {},
             
             ## for pollution model
             "source" : [],
@@ -81,6 +85,19 @@ class ScenarioWriter:
     def set_initial_head(self, initial_head):
         self.scenario["initial_head"] = initial_head
 
+    def set_constant_head(self, chdspd_posi, target_period=0):
+        """
+        chdspd_posi : 位置列表，如[[0,1,2], [0,3,4]]
+        """
+        self.scenario['chdspd'][target_period] = chdspd_posi
+    
+    def set_well(self, spd, target_period=0):
+        """
+        spd: [(z,x,y), qwell, cwell]
+        qwell: Volumetric injection rate ($m^3/d$)
+        cwell: Concentration of injected water ($mg/L$)
+        """
+        self.scenario['wellspd'][target_period] = spd
 
     def set_flowmodel_solver(self, hclose, nouter, ninner, rclose, relax):
         self.scenario["hclose"] = hclose
