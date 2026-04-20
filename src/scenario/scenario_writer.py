@@ -13,6 +13,7 @@ class ScenarioWriter:
             # Model parameters
             "sim_name":scenario_name,
             ## general
+            "tif_template" : None,
             "length_units" : "meters", # default is meters 
             "time_units" : None, # default is days
             "icelltype" : 0, # default is 0
@@ -45,6 +46,8 @@ class ScenarioWriter:
         # make scenario_name as a dir
         if not os.path.exists(self.path):
             os.makedirs(self.path)
+    def set_tif_template(self, tif_name):
+        self.scenario["tif_template"] = str(tif_name)
 
     def set_time(self, nper, perlen, nstp, tsmult, unit="days"):
         """ 
@@ -118,8 +121,6 @@ class ScenarioWriter:
         if not self.scenario['cncspd']:
             self.scenario['cncspd'] = {}
         self.scenario['cncspd'][target_period] = cncspd_posi
-
-
 
     def write(self):
         with open(os.path.join(self.path, "scenario.json"), "w") as f:

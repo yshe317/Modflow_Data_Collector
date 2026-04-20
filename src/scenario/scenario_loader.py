@@ -33,7 +33,7 @@ class ScenarioLoader:
             output = np.full(shape, config, dtype=np.float32)
             return output
         else:
-            file = rasterio.open(self.tif_path)
+            file = rasterio.open(config)
             return file.read()
 
 
