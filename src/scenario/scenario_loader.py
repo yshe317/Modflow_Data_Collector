@@ -14,7 +14,8 @@ class ScenarioLoader:
         numeric_key = ['chdspd','wellspd','cncspd']
         for i in numeric_key:
             target = self.scenario[i]
-            for key in target.keys():
+            key_ls = list(target.keys())
+            for key in key_ls:
                 value = target[key]
                 target.pop(key)
                 target[int(key)] = value
