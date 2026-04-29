@@ -5,7 +5,7 @@ class BayesianOptimizer:
     def __init__(self, model, max_iter = 50):
         self.model = model
         self.max_iter = max_iter
-    
+        
     def optimize(self, initial_guess, target):
         """
         优化模型参数
@@ -16,7 +16,8 @@ class BayesianOptimizer:
         current_likelihood = self._likelihood(current_output, target)
         current_prior = self._prior(current)
         current_posterior = current_likelihood + current_prior
-        
+        best = current
+        best_posterior = 0
         for i in range(self.max_iter):
             # 生成新的参数候选
             candidate = self._generate_candidate(current)
@@ -27,16 +28,17 @@ class BayesianOptimizer:
             candidate_likelihood = self._likelihood(candidate_output, target)
             candidate_prior = self._prior(candidate)
             candidate_posterior = candidate_likelihood + candidate_prior
-            
+            if candidate_posterior > best_posterior:
+                best = candidate
+                best_posterior = candidate_posterior
             # 计算接受概率（考虑似然和先验）
             acceptance_prob = min(1, np.exp(candidate_posterior - current_posterior))
-            
             # 根据接受概率更新参数
             if random.random() < acceptance_prob:
                 current = candidate
                 current_posterior = candidate_posterior
         
-        return current
+        return best
     
     def _generate_candidate(self, current):
         """
