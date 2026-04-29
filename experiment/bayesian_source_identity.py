@@ -1,3 +1,4 @@
+from pandas.core.arrays.timedeltas import truediv_object_array
 from src.scenario.scenario_writer import ScenarioWriter
 from src.scenario.scenario_loader import ScenarioLoader
 from src.model.model_builder import Modflow6Builder
@@ -61,8 +62,10 @@ def _write_scenario(plt_position, plt_quantity, plt_time):
 
 
 class Model:
-    def __init__(self):
+    def __init__(self, target, target_col_row):
         self.sl = None
+        self.target = target
+        self.target_col_row = target_col_row
     def forward(self, theta):
         plt_position = theta[0]
         plt_quantity = theta[1]
@@ -71,12 +74,22 @@ class Model:
         self.sl = ScenarioLoader("lghg")
         mb = Modflow6Builder(self.sl)
         sim = mb.build()
-        sim.run_simulation(silent=False, report=True)
+        sim.run_simulation(silent=truediv_object_array, report=False)
         # return sim.get_concentration()
-    def get_concentration(self, row, col):
+    def get_concentration(self):
+        row = self.target_col_row[:, 0]
+        col = self.target_col_row[:, 1]
         co = Collector(self.sl)
-        conc = co.value_of_row_col(row, col)
+        conc = co.value_of_row_col(row,col)
         return conc
+    
+    def constraint(self):
+        max_col = self.sl.scenario['ncol']
+        max_row = self.sl.scenario['nrow']
+        nper = self.sl.scenario['nper']
+        return max_col, max_row, 1000, 1000, nper, nper 
+
+
 def main():
     # set scenario
     observed = Observed("scenarios/lghg/observed.csv")
@@ -84,26 +97,26 @@ def main():
     ob_col_row = observed.get_col_row()
     
     # initial guess
-    model = Model()
+    model = Model(ob_conc,ob_col_row)
     current_plt_position = [5,6]
     current_plt_quantity = [100, 200]
     current_plt_time = [0, 10]
 
-    for i in range(5):
-        current_plt_position[0] = i*10
-        current_plt_position[1] = i*10
-        current_plt_quantity[0] = i*10
-        current_plt_quantity[1] = i*10
-        current_plt_time[0] = i
-        current_plt_time[1] = 10
-        model.forward([current_plt_position, current_plt_quantity, current_plt_time])
+    # for i in range(5):
+    #     current_plt_position[0] = i*10
+    #     current_plt_position[1] = i*10
+    #     current_plt_quantity[0] = i*10
+    #     current_plt_quantity[1] = i*10
+    #     current_plt_time[0] = i
+    #     current_plt_time[1] = 10
+    #     model.forward([current_plt_position, current_plt_quantity, current_plt_time])
         
-        conc = model.get_concentration(ob_col_row[:, 0], ob_col_row[:, 1])
-        print(conc)
+    #     conc = model.get_concentration()
+    #     print(conc)
     
     # sim.run_simulation(silent=False, report=True)
     # co = Collector(sl)
     # co.collect()
 
-    # optimizer = BayesianOptimizer(model)
-    # optimizer.optimize([current_plt_position, current_plt_quantity, current_plt_time], [0, 0, 0])
+    optimizer = BayesianOptimizer(model)
+    optimizer.optimize([current_plt_position, current_plt_quantity, current_plt_time], ob_conc)
