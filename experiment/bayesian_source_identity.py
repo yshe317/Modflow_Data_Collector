@@ -119,4 +119,6 @@ def main():
     # co.collect()
 
     optimizer = BayesianOptimizer(model)
-    optimizer.optimize([current_plt_position, current_plt_quantity, current_plt_time], ob_conc)
+    current, best = optimizer.optimize([current_plt_position, current_plt_quantity, current_plt_time], ob_conc)
+    print(current)
+    print(best)

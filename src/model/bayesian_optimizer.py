@@ -19,6 +19,10 @@ class BayesianOptimizer:
         best = current
         best_posterior = 0
         for i in range(self.max_iter):
+            # 打印进度条
+            progress = f"\rProgress: {i+1}/{self.max_iter}"
+            print(progress, end="", flush=True)
+            
             # 生成新的参数候选
             candidate = self._generate_candidate(current)
             
@@ -38,7 +42,7 @@ class BayesianOptimizer:
                 current = candidate
                 current_posterior = candidate_posterior
         
-        return best
+        return current, best
     
     def _generate_candidate(self, current):
         """

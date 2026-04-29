@@ -33,7 +33,7 @@ class Modflow6Builder:
         )
 
         # write simulation
-        self.sim.write_simulation()
+        self.sim.write_simulation(silent=True)
         return self.sim    
     
     def _build_gwf(self):
