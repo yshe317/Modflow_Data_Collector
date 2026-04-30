@@ -1,4 +1,3 @@
-from pandas.core.arrays.timedeltas import truediv_object_array
 from src.scenario.scenario_writer import ScenarioWriter
 from src.scenario.scenario_loader import ScenarioLoader
 from src.model.model_builder import Modflow6Builder
@@ -74,7 +73,7 @@ class Model:
         self.sl = ScenarioLoader("lghg")
         mb = Modflow6Builder(self.sl)
         sim = mb.build()
-        sim.run_simulation(silent=truediv_object_array, report=False)
+        sim.run_simulation(silent=True, report=False)
         # return sim.get_concentration()
     def get_concentration(self):
         row = self.target_col_row[:, 0]

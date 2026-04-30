@@ -2,7 +2,7 @@ import numpy as np
 import random
 
 class BayesianOptimizer:
-    def __init__(self, model, max_iter = 50):
+    def __init__(self, model, max_iter = 5000):
         self.model = model
         self.max_iter = max_iter
         
@@ -17,7 +17,7 @@ class BayesianOptimizer:
         current_prior = self._prior(current)
         current_posterior = current_likelihood + current_prior
         best = current
-        best_posterior = 0
+        best_posterior = -np.inf
         for i in range(self.max_iter):
             # 打印进度条
             progress = f"\rProgress: {i+1}/{self.max_iter}"
@@ -35,6 +35,8 @@ class BayesianOptimizer:
             if candidate_posterior > best_posterior:
                 best = candidate
                 best_posterior = candidate_posterior
+                print("best:", best, "best_posterior:", best_posterior)
+
             # 计算接受概率（考虑似然和先验）
             acceptance_prob = min(1, np.exp(candidate_posterior - current_posterior))
             # 根据接受概率更新参数
@@ -53,7 +55,7 @@ class BayesianOptimizer:
         plt_time = current[2].copy() #(2)
 
         # 定义各参数的搜索步长
-        position_step = 1      # 位置变化步长
+        position_step = 5      # 位置变化步长
         amount_step = 5        # 数量变化步长
         conc_step = 1          # 浓度变化步长
         time_step = 1          # 时间变化步长
