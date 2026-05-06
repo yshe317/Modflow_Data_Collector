@@ -90,33 +90,17 @@ class Model:
 
 
 def main():
-    # set scenario
     observed = Observed("scenarios/lghg/observed.csv")
     ob_conc = observed.get_data("1_2_二氯乙烷")
     ob_col_row = observed.get_col_row()
     
     # initial guess
-    model = Model(ob_conc,ob_col_row)
+    model = Model(ob_conc, ob_col_row)
     current_plt_position = [5,6]
     current_plt_quantity = [100, 200]
     current_plt_time = [0, 10]
 
-    # for i in range(5):
-    #     current_plt_position[0] = i*10
-    #     current_plt_position[1] = i*10
-    #     current_plt_quantity[0] = i*10
-    #     current_plt_quantity[1] = i*10
-    #     current_plt_time[0] = i
-    #     current_plt_time[1] = 10
-    #     model.forward([current_plt_position, current_plt_quantity, current_plt_time])
-        
-    #     conc = model.get_concentration()
-    #     print(conc)
-    
-    # sim.run_simulation(silent=False, report=True)
-    # co = Collector(sl)
-    # co.collect()
-
+    #
     optimizer = BayesianOptimizer(model)
     current, best = optimizer.optimize([current_plt_position, current_plt_quantity, current_plt_time], ob_conc)
     print(current)
