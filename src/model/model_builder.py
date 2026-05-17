@@ -13,15 +13,18 @@ class Modflow6Builder:
         # build simulation
         self.sim = flopy.mf6.MFSimulation(sim_name=self.scenario["sim_name"], sim_ws=self.sim_ws, exe_name="mf6")
         flopy.mf6.ModflowTdis(self.sim, nper=self.scenario["nper"], perioddata=self.scenario["tdis_rc"], time_units=self.scenario["time_units"])
-
+        print("Tdis built successfully")
+        
         # build gwf model
         self._build_gwf()
         self._build_gwf_solver()
+        print("GWF model built successfully")
         
         # build gwt model
         self._build_gwt()
         self._build_gwt_solver()
-
+        print("GWT model built successfully")
+        
         # init
         # Instantiating MODFLOW 6 flow-transport exchange mechanism
         flopy.mf6.ModflowGwfgwt(
@@ -31,9 +34,10 @@ class Modflow6Builder:
             exgmnameb=self.gwtname,
             filename=f"{self.scenario["sim_name"]}.gwfgwt",
         )
-
+        print("GWF-GWT exchange mechanism built successfully")
+        
         # write simulation
-        self.sim.write_simulation(silent=True)
+        self.sim.write_simulation(silent=False)
         return self.sim    
     
     def _build_gwf(self):
@@ -233,7 +237,7 @@ class Modflow6Builder:
             budget_filerecord=f"{self.gwtname}.cbc",
             concentration_filerecord=f"{self.gwtname}.ucn",
             concentrationprintrecord=[("COLUMNS", 10, "WIDTH", 15, "DIGITS", 6, "GENERAL")],
-            saverecord=[("CONCENTRATION", "ALL"), ("BUDGET", "ALL")],
+            saverecord=[("CONCENTRATION", "LAST"), ("BUDGET", "LAST")],
             printrecord=[("CONCENTRATION", "LAST"), ("BUDGET", "LAST")],
         )
     def _build_gwt_solver(self):

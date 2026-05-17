@@ -4,6 +4,9 @@ from src.model.model_builder import Modflow6Builder
 from src.data.collector import Collector
 from src.model.bayesian_optimizer import BayesianOptimizer
 from src.data.observed import Observed
+
+
+import matplotlib.pyplot as plt
 import numpy as np
 # 定义各参数的搜索步长
 position_step = 20     # 位置变化步长
@@ -113,6 +116,9 @@ class Model:
         mb = Modflow6Builder(self.sl)
         sim = mb.build()
         sim.run_simulation(silent=True, report=False)
+        
+        # save head
+       
         # return sim.get_concentration()
     def get_concentration(self):
         row = self.target_col_row[:, 0]
@@ -129,7 +135,7 @@ class Model:
 
     def collect(self):
         co = Collector(self.sl)
-        co.collect(plot_save_freq=60)
+        co.collect(plot_save_freq=360)
         co.collect_theta(self.theta)
         
 
@@ -141,8 +147,8 @@ def main():
     
     # initial guess
     model = Model(ob_conc,ob_col_row)
-    current_plt_position = [5,6]
-    current_plt_quantity = [100, 200]
+    current_plt_position = [50,50]
+    current_plt_quantity = [1, 200]
     current_plt_time = [0, 10]
     theta = [current_plt_position, current_plt_quantity, current_plt_time]
     for i in range(50):

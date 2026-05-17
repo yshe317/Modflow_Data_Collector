@@ -5,8 +5,6 @@ from src.data.collector import Collector
 from src.model.bayesian_optimizer import BayesianOptimizer
 from src.data.observed import Observed
 
-
-
 def _write_scenario(plt_position, plt_quantity, plt_time):
     sw = ScenarioWriter("lghg")
     sw.set_time(12, 30, 30, 1)
