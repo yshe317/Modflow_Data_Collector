@@ -49,7 +49,7 @@ def _generate_candidate(current, model):
 
 def _write_scenario(plt_position, plt_quantity, plt_time, sim_name):
     sw = ScenarioWriter(sim_name)
-    sw.set_time(12, 30, 30, 1)
+    sw.set_time(120, 30, 30, 1)
 
     x = 119
     y = 118
@@ -147,17 +147,13 @@ def main():
     
     # initial guess
     model = Model(ob_conc,ob_col_row)
-    current_plt_position = [50,50]
-    current_plt_quantity = [1, 200]
+    current_plt_position = [100,10]
+    current_plt_quantity = [1, 10]
     current_plt_time = [0, 10]
     theta = [current_plt_position, current_plt_quantity, current_plt_time]
-    for i in range(50):
+    for i in range(1):
         model.forward(theta, f"lghg-{i}")
         model.collect()
         theta = _generate_candidate(theta, model)
-        
-
-
-
     # #     conc = model.get_concentration()
     # #     print(conc)

@@ -24,7 +24,6 @@ class ScenarioLoader:
         return self.scenario
 
     def config_to_numpy(self, config, shape=None):
-
         if not shape:
             nlay = self.scenario['nlay']
             nrow = self.scenario['nrow']

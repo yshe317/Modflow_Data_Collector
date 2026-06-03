@@ -4,7 +4,7 @@ from src.model.model_builder import Modflow6Builder
 from src.data.collector import Collector
 from src.model.bayesian_optimizer import BayesianOptimizer
 from src.data.observed import Observed
-
+from test.little1m import createlittle1m
 def _write_scenario(plt_position, plt_quantity, plt_time):
     sw = ScenarioWriter("lghg")
     sw.set_time(12, 30, 30, 1)
@@ -59,15 +59,16 @@ def _write_scenario(plt_position, plt_quantity, plt_time):
 
 
 class Model:
-    def __init__(self, target, target_col_row):
+    def __init__(self, target, target_col_row, write_scenario):
         self.sl = None
         self.target = target
         self.target_col_row = target_col_row
-    def forward(self, theta):
+        self._write_scenario = write_scenario
+    def forward(self, theta,):
         plt_position = theta[0]
         plt_quantity = theta[1]
         plt_time = theta[2]
-        _write_scenario(plt_position, plt_quantity, plt_time)
+        self._write_scenario(plt_position, plt_quantity, plt_time)
         self.sl = ScenarioLoader("lghg")
         mb = Modflow6Builder(self.sl)
         sim = mb.build()
@@ -93,8 +94,8 @@ def main():
     ob_col_row = observed.get_col_row()
     
     # initial guess
-    model = Model(ob_conc, ob_col_row)
-    current_plt_position = [5,6]
+    model = Model(ob_conc, ob_col_row, createlittle1m)
+    current_plt_position = [500,500]
     current_plt_quantity = [100, 200]
     current_plt_time = [0, 10]
 

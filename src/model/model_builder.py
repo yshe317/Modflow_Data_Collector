@@ -48,8 +48,11 @@ class Modflow6Builder:
             save_flows=True,
             model_nam_file=f"{gwfname}.nam",
         )
-
-
+        idomain =  np.ones((self.scenario["nlay"], self.scenario["nrow"], self.scenario["ncol"]), dtype=int)
+        if self.scenario["idomain"] is not None:
+            print(self.loader.config_to_numpy(self.scenario["idomain"]).shape)
+            idomain = self.loader.config_to_numpy(self.scenario["idomain"])
+            
         top = self.loader.config_to_numpy(self.scenario["top"])
         botm = self.loader.config_to_numpy(self.scenario["botm"])
         flopy.mf6.ModflowGwfdis(
@@ -62,12 +65,15 @@ class Modflow6Builder:
             delc=self.scenario["delc"],
             top=top,
             botm=botm,
-            idomain=np.ones((self.scenario["nlay"], self.scenario["nrow"], self.scenario["ncol"]), dtype=int),
+            idomain=idomain,
             filename=f"{gwfname}.dis",
         )
 
         k11 = self.loader.config_to_numpy(self.scenario["k11"])
+        np.clip(k11, 0.00001, None, out=k11)
         k33 = self.loader.config_to_numpy(self.scenario["k33"])
+        np.clip(k33, 0.00001, None, out=k33)
+        print(k11.shape)
         flopy.mf6.ModflowGwfnpf(
             gwf,
             save_flows=False,
@@ -85,7 +91,7 @@ class Modflow6Builder:
             filename=f"{gwfname}.ic"
         )
 
-        sto = flopy.mf6.ModflowGwfsto(gwf, ss=0, sy=0, filename=f"{gwfname}.sto")
+        # sto = flopy.mf6.ModflowGwfsto(gwf, ss=0, sy=0, filename=f"{gwfname}.sto")
         
         # 定水头
         chdspd = {}
@@ -93,11 +99,16 @@ class Modflow6Builder:
         for key in all_chdspd.keys():
             chdspd[key] = []
             for posi in all_chdspd[key]:
-                _posi = posi[0], posi[1], posi[2] 
-                chdspd[key].append([_posi, initial_head[_posi]])
+                _posi = posi[0], posi[1], posi[2]
+
+                if len(posi) != 3:
+                    chdspd[key].append([_posi, posi[3]])
+                else:
+                    chdspd[key].append([_posi, initial_head[_posi]])
+        max_cells = max(len(cells) for cells in chdspd.values()) if chdspd else 0
         flopy.mf6.ModflowGwfchd(
             gwf,
-            maxbound=len(chdspd),
+            maxbound=max_cells,
             stress_period_data=chdspd,
             save_flows=False,
             pname="CHD-1",
@@ -156,6 +167,10 @@ class Modflow6Builder:
         top = self.loader.config_to_numpy(self.scenario["top"])
         botm = self.loader.config_to_numpy(self.scenario["botm"])
         # Dis
+        idomain =  np.ones((self.scenario["nlay"], self.scenario["nrow"], self.scenario["ncol"]), dtype=int)
+        if self.scenario["idomain"] is not None:
+            print(self.loader.config_to_numpy(self.scenario["idomain"]).shape)
+            idomain = self.loader.config_to_numpy(self.scenario["idomain"])
         flopy.mf6.ModflowGwtdis(
             gwt,
             length_units=self.scenario["length_units"],
@@ -166,7 +181,7 @@ class Modflow6Builder:
             delc=self.scenario["delc"],
             top=top,
             botm=botm,
-            idomain=np.ones((self.scenario["nlay"], self.scenario["nrow"], self.scenario["ncol"]), dtype=int),
+            idomain=idomain,
             filename=f"{self.gwtname}.dis",
         )
 
@@ -188,6 +203,7 @@ class Modflow6Builder:
             flopy.mf6.ModflowGwtdsp(
                 gwt,
                 xt3d_off=True,
+                diffc=self.scenario['diffc'],
                 alh=self.scenario['al'],
                 ath1=self.scenario['al'] * self.scenario['trpt'],
                 filename=f"{self.gwtname}.dsp",
@@ -209,10 +225,11 @@ class Modflow6Builder:
 
         # Instantiating MODFLOW 6 transport constant concentration package
         
-        
+        max_cells = max(len(cells) if cells else 0 for cells in self.scenario['cncspd'].values()) if self.scenario['cncspd'] else 0
+
         if self.scenario['cncspd']:
             cncspd = {}
-            all_cncspd = self.scenario["chdspd"]
+            all_cncspd = self.scenario["cncspd"]
             for key in all_cncspd.keys():
                 cncspd[key] = []
                 for posi in all_cncspd[key]:
@@ -237,7 +254,7 @@ class Modflow6Builder:
             budget_filerecord=f"{self.gwtname}.cbc",
             concentration_filerecord=f"{self.gwtname}.ucn",
             concentrationprintrecord=[("COLUMNS", 10, "WIDTH", 15, "DIGITS", 6, "GENERAL")],
-            saverecord=[("CONCENTRATION", "LAST"), ("BUDGET", "LAST")],
+            saverecord=[("CONCENTRATION", "ALL"), ("BUDGET", "LAST")],
             printrecord=[("CONCENTRATION", "LAST"), ("BUDGET", "LAST")],
         )
     def _build_gwt_solver(self):

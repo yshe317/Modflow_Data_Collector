@@ -25,7 +25,7 @@ class ScenarioWriter:
             "delr" : None,  # Column width ($m$)
             "delc" : None,  # Row width ($m$)
             "delz" : None,  # Layer thickness ($m$)
-            
+            "idomain" : None,
             ### model times
             "nper" : None,
             "tdis_rc" : None,    # time step interval
@@ -89,6 +89,9 @@ class ScenarioWriter:
     def set_initial_head(self, initial_head):
         self.scenario["initial_head"] = initial_head
 
+    def set_idomain(self, idomain):
+        self.scenario["idomain"] = idomain
+
     def set_constant_head(self, chdspd_posi, target_period=0):
         """
         chdspd_posi : 位置列表，如[[0,1,2], [0,3,4]]
@@ -113,10 +116,10 @@ class ScenarioWriter:
     def set_initial_concentration(self,initial_concentration):
         self.scenario['sconc'] = initial_concentration
     
-    def set_al(self, al, trt):
+    def set_al(self, al, trt,diffc= 3e-10):
         self.scenario['al'] = al
         self.scenario['trt'] = trt
-        
+        self.scenario['diffc'] = diffc
     def set_cncspd(self,cncspd_posi, target_period=0):
         if not self.scenario['cncspd']:
             self.scenario['cncspd'] = {}
