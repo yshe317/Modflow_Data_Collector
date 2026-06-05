@@ -37,9 +37,9 @@ def data_prepare():
     with rasterio.open("scenarios/base/idomain.tif", 'w', **meta) as dst:
         dst.write(idomain)
 
-def create(input_ps):
+def create(input_ps, name="base"):
     # data_prepare()
-    sw = ScenarioWriter("base")
+    sw = ScenarioWriter(name)
     # sw.set_time(120, 30, 30, 1) # 120 个月
     nperiod = 20
     sw.set_time(nperiod, 180, 18, 1) 
@@ -107,8 +107,8 @@ def create(input_ps):
 
     sw.write()
 
-def run():
-    sl = ScenarioLoader("base")
+def run(name="base"):
+    sl = ScenarioLoader(name)
     mb = Modflow6Builder(sl)
     sim = mb.build()
     sim.run_simulation(silent=False, report=True)
