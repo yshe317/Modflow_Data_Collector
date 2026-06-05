@@ -151,7 +151,7 @@ test_output/
 
 # Scenario directories (if they contain generated data)
 scenarios/
-
+!scenarios/base/
 # Log files
 *.log
 
