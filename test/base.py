@@ -4,10 +4,11 @@ from src.model.model_builder import Modflow6Builder
 from src.data.collector import Collector
 from src.data.basemap import BaseMap
 from src.utils import drop_duplicates
-
+from src.model.forward_model import ForwardModel
 import rasterio
 import numpy as np
 import pandas as pd
+
 def data_prepare():
     tiffile = rasterio.open("scenarios/base/ksep.tif")
     data = tiffile.read()
@@ -36,11 +37,12 @@ def data_prepare():
     with rasterio.open("scenarios/base/idomain.tif", 'w', **meta) as dst:
         dst.write(idomain)
 
-def create():
-    data_prepare()
+def create(input_ps):
+    # data_prepare()
     sw = ScenarioWriter("base")
     # sw.set_time(120, 30, 30, 1) # 120 个月
-    sw.set_time(12, 180, 6, 1) 
+    nperiod = 20
+    sw.set_time(nperiod, 180, 18, 1) 
 
     x = 300
     y = 500
@@ -51,27 +53,49 @@ def create():
     sw.set_initial_head(70)
 
 
-    basemap = BaseMap("scenarios/base/knum.tif")
+    basemap = BaseMap("scenarios/base/ksep.tif")
     df = pd.read_excel("scenarios/base/chd.xls")
     chs = []
     for i in range(len(df)):
         row,col = basemap.get_index_by_xy(df['x'].tolist()[i], df['y'].tolist()[i])
-        if basemap.in_range(col, row):
-            chs.append([0, int(row), int(col),df['value'].tolist()[i]])
+        # if basemap.in_range(row,col):
+            
+        chs.append([0, int(row), int(col), df['value'].tolist()[i]])
     chs = drop_duplicates(chs, lambda x, y: x[1] == y[1] and x[2] == y[2] and x[0] == y[0])
     sw.set_constant_head(chs)
 
-    # print(chs)
     # pdf = pd.read_excel("scenarios/base/ps.xls")
     # for i in range(len(pdf)):
     #     row,col = basemap.get_index_by_xy(pdf['x'].tolist()[i], pdf['y'].tolist()[i])
     #     print(row, col)
     sw.set_idomain("scenarios/base/idomain.tif")
-    sw.set_well([[(0,70,70), 00.1, 100]], target_period=0)
-    sw.set_well([[(0,70,70), 0, 0]], target_period=20)
 
-    sw.set_well([[(0,70,130), 0.01, 500]], target_period=2)
-    sw.set_well([[(0,70,130), 0, 0]], target_period=20)
+    
+    if input_ps:
+        temp = {}
+        for i in range(nperiod):
+            temp[i] = []
+        for p in input_ps:
+            start = p[4]
+            end = p[5]
+            x = p[0]
+            y = p[1]
+            q = p[2]
+            c = p[3]
+            for i in range(start, end):
+                temp[i].append([(0, x, y), q, c])
+            if end < nperiod:
+                temp[end].append([(0, x, y), 0, 0])
+
+        for i in range(nperiod):
+            sw.set_well(temp[i], target_period=i)
+    else:
+        sw.set_well([], target_period=0)
+
+    # sw.set_well([[(0,70,70), 00.1, 100]], target_period=0)
+    # sw.set_well([[(0,70,130), 0.01, 500],[(0,70,70), 00.1, 100]], target_period=4)
+    # sw.set_well([[(0,70,130), 0.01, 500], [(0,70,70), 0, 0]], target_period=5)
+    # sw.set_well([[(0,70,130), 0, 0]], target_period=10)
 
     sw.set_al(40, 0.1)
     sw.set_cncspd([])
@@ -90,3 +114,10 @@ def run():
     sim.run_simulation(silent=False, report=True)
     collector = Collector(sl)
     collector.collect(output_template="scenarios/base/ksep.tif")
+
+
+def forward():
+    model = ForwardModel("base", create)
+    model.forward( [[70,70,0.1,100,0, 10], [70,130,0.01,500,5,15]])
+
+    model.collect("scenarios/base/ksep.tif")

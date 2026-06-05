@@ -50,8 +50,7 @@ class Modflow6Builder:
         )
         idomain =  np.ones((self.scenario["nlay"], self.scenario["nrow"], self.scenario["ncol"]), dtype=int)
         if self.scenario["idomain"] is not None:
-            print(self.loader.config_to_numpy(self.scenario["idomain"]).shape)
-            idomain = self.loader.config_to_numpy(self.scenario["idomain"])
+            idomain = self.loader.config_to_numpy(self.scenario["idomain"]).astype(int)
             
         top = self.loader.config_to_numpy(self.scenario["top"])
         botm = self.loader.config_to_numpy(self.scenario["botm"])
@@ -169,8 +168,7 @@ class Modflow6Builder:
         # Dis
         idomain =  np.ones((self.scenario["nlay"], self.scenario["nrow"], self.scenario["ncol"]), dtype=int)
         if self.scenario["idomain"] is not None:
-            print(self.loader.config_to_numpy(self.scenario["idomain"]).shape)
-            idomain = self.loader.config_to_numpy(self.scenario["idomain"])
+            idomain = self.loader.config_to_numpy(self.scenario["idomain"]).astype(int)
         flopy.mf6.ModflowGwtdis(
             gwt,
             length_units=self.scenario["length_units"],

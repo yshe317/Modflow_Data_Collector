@@ -22,6 +22,8 @@ from test.little1m import createlittle1m,simu
 
 
 
-from test.base import create,run
-create()
-run()
+from test.base import create,run,forward
+# create()
+# run()
+
+forward()

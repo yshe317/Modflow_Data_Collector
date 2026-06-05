@@ -4,7 +4,7 @@ from src.model.model_builder import Modflow6Builder
 from src.data.collector import Collector
 from src.model.bayesian_optimizer import BayesianOptimizer
 from src.data.observed import Observed
-from test.little1m import createlittle1m
+from test.base import create 
 def _write_scenario(plt_position, plt_quantity, plt_time):
     sw = ScenarioWriter("lghg")
     sw.set_time(12, 30, 30, 1)
