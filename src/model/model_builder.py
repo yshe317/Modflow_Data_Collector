@@ -115,17 +115,17 @@ class Modflow6Builder:
         )
 
 
-        #定流量井
-        flopy.mf6.ModflowGwfwel(
-            gwf,
-            print_input=True,
-            print_flows=True,
-            stress_period_data=self.scenario["wellspd"],
-            save_flows=False,
-            auxiliary="CONCENTRATION",
-            pname="WEL-1",
-            filename=f"{gwfname}.wel",
-        )
+        # #定流量井
+        # flopy.mf6.ModflowGwfwel(
+        #     gwf,
+        #     print_input=True,
+        #     print_flows=True,
+        #     stress_period_data=self.scenario["wellspd"],
+        #     save_flows=False,
+        #     auxiliary="CONCENTRATION",
+        #     pname="WEL-1",
+        #     filename=f"{gwfname}.wel",
+        # )
 
         # 输出控制
         flopy.mf6.ModflowGwfoc(
@@ -243,8 +243,25 @@ class Modflow6Builder:
             )
 
         # Instantiating MODFLOW 6 transport source-sink mixing package
-        sourcerecarray = [("WEL-1", "AUX", "CONCENTRATION")]
-        flopy.mf6.ModflowGwtssm(gwt, sources=sourcerecarray, filename=f"{self.gwtname}.ssm")
+        # sourcerecarray = [("WEL-1", "AUX", "CONCENTRATION")]
+        flopy.mf6.ModflowGwtssm(
+            gwt, 
+            filename=f"{self.gwtname}.ssm"
+        )
+        # flopy.mf6.ModflowGwtssm(gwt, sources=sourcerecarray, filename=f"{self.gwtname}.ssm")
+        # print(self.scenario["source"])
+        # src_spd = {
+        #     0: [[0, 70, 70, 100.0]], # 第1个压力期: 释放 100 g/d
+        #     1: [[0, 70, 70, 50.0]],  # 第2个压力期: 释放 50 g/d
+        #     2: [[0, 70, 70, 0.0]]    # 第3个压力期: 停止释放
+        # }
+        flopy.mf6.ModflowGwtsrc(
+            gwt,
+            maxbound=1,
+            stress_period_data=self.scenario["source"],
+            pname="SRC-1",
+            filename=f"{self.gwtname}.src"
+        )
 
         # Instantiating MODFLOW 6 transport output control package
         flopy.mf6.ModflowGwtoc(

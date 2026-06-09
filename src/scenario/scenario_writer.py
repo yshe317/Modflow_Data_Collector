@@ -36,9 +36,8 @@ class ScenarioWriter:
             "initial_head" : None,
             'chdspd' : {},
             'wellspd' : {},
-            
+            'source' : {},
             ## for pollution model
-            "source" : [],
             "al" : 0,  # Longitudinal dispersivity ($m$)
             "trpt" : 0.3,  # Ratio of transverse to longitudinal dispersivity
             "cncspd":None, 
@@ -105,6 +104,9 @@ class ScenarioWriter:
         cwell: Concentration of injected water ($mg/L$)
         """
         self.scenario['wellspd'][target_period] = spd
+
+    def set_source(self, spd, target_period=0):
+        self.scenario['source'][target_period] = spd
 
     def set_flowmodel_solver(self, hclose, nouter, ninner, rclose, relax):
         self.scenario["hclose"] = hclose

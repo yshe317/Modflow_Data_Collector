@@ -11,7 +11,7 @@ class ScenarioLoader:
             self.scenario = json.load(f)
         self._numeric_key()
     def _numeric_key(self):
-        numeric_key = ['chdspd','wellspd','cncspd']
+        numeric_key = ['chdspd','wellspd','cncspd', 'source']
         for i in numeric_key:
             target = self.scenario[i]
             key_ls = list(target.keys())

@@ -83,14 +83,14 @@ def create(input_ps, name="base"):
             q = p[2]
             c = p[3]
             for i in range(start, end):
-                temp[i].append([(0, x, y), q, c])
+                temp[i].append([0, x, y, q * c])
             if end < nperiod:
-                temp[end].append([(0, x, y), 0, 0])
+                temp[end].append([0, x, y, 0])
 
         for i in range(nperiod):
-            sw.set_well(temp[i], target_period=i)
+            sw.set_source(temp[i], target_period=i)
     else:
-        sw.set_well([], target_period=0)
+        sw.set_source([], target_period=0)
 
     # sw.set_well([[(0,70,70), 00.1, 100]], target_period=0)
     # sw.set_well([[(0,70,130), 0.01, 500],[(0,70,70), 00.1, 100]], target_period=4)
@@ -105,6 +105,7 @@ def create(input_ps, name="base"):
     hclose, rclose, relax = 1e-6, 1e-6, 1.0
     sw.set_flowmodel_solver(hclose, nouter, ninner, rclose, relax)
 
+    print("--start writing")
     sw.write()
 
 def run(name="base"):
@@ -118,6 +119,6 @@ def run(name="base"):
 
 def forward():
     model = ForwardModel("base", create)
-    model.forward( [[70,70,0.1,100,0, 10], [70,130,0.01,500,5,15]])
+    model.forward( [[70,70,0.1,100,0, 10]])#, [70,130,0.01,500,5,15]])
 
     model.collect("scenarios/base/ksep.tif")
