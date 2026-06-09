@@ -42,7 +42,7 @@ def create(input_ps, name="base"):
     sw = ScenarioWriter(name)
     # sw.set_time(120, 30, 30, 1) # 120 个月
     nperiod = 20
-    sw.set_time(nperiod, 180, 18, 1) 
+    sw.set_time(nperiod, 180, 9, 1) 
 
     x = 300
     y = 500
@@ -122,3 +122,7 @@ def forward():
     model.forward( [[70,70,0.1,100,0, 10]])#, [70,130,0.01,500,5,15]])
 
     model.collect("scenarios/base/ksep.tif")
+
+def get_model():
+    model = ForwardModel("base", create)
+    return model

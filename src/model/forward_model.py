@@ -7,7 +7,9 @@ class ForwardModel:
         self.sl = None
         self.name = name
         self._write_scenario = write_scenario
+        self.saving_theta = None
     def forward(self, theta):
+        self.saving_theta = theta
         self._write_scenario(theta)
         self.sl = ScenarioLoader(self.name)
         mb = Modflow6Builder(self.sl)
@@ -24,6 +26,10 @@ class ForwardModel:
         max_row = self.sl.scenario['nrow']
         nper = self.sl.scenario['nper']
         return max_col, max_row, 1000, 1000, nper, nper 
-    def collect(self, template):
+    def collect(self, template, savepath=None):
+
         co = Collector(self.sl)
-        co.collect(output_template=template)
+        co.set_output_path(savepath)
+        # co.collect(output_template=template)
+        co.collect_conc(output_template=template)
+        co.collect_theta(self.saving_theta)
